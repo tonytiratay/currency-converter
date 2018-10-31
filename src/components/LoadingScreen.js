@@ -6,6 +6,7 @@ export default function LoadingScreen({ loading }) {
     <div style={styles.container}>
     	<div style={styles.imageContainer}>
     		<div><img style={styles.image} src="logo.png" alt="logo oclock"/></div>
+    		<div><h1>Currency Converter</h1></div>
     		<div><p style={styles.loadingText}><Icon loading name='sync alternate' />Loading symbols...</p></div>
     	</div>
     </div>
@@ -23,7 +24,7 @@ const styles = {
 	},
 	imageContainer: {
 		display: 'flex',
-		flex: 1,
+		maxWidth: '50%',
 		flexDirection: 'column',
 		alignItems: 'center',
 	    justifyContent: 'center',
@@ -32,6 +33,7 @@ const styles = {
 		maxWidth: '100%'
 	},
 	loadingText: {
-		fontSize: 24
+		fontSize: 24,
+		marginTop: 30
 	}
 };
