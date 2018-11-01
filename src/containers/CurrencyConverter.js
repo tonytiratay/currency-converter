@@ -14,7 +14,7 @@ export default function CurrencyConverter(){
 	const [error, setError] = useState(false); // Erreur avec l'API
 	const [amount, setAmount] = useState(50); // Valeur saisie par l'user
 	const [devisesList, setDevisesList] = useState([]); // Liste des devises
-	const [rates, setRates] = useState({}); // Liste des ratios
+	const [rates, setRates] = useState({USD: 1.13}); // Liste des ratios
 	const [loading, setLoading] = useState(true);  // UI loading
 	const [result, setResult] = useState(0); // Resultat de la conversion
 	const [devise, setDevise] = useState('USD'); // Devise sélectionnée
@@ -23,7 +23,7 @@ export default function CurrencyConverter(){
 
 	useEffect(async () => {
 
-		if (devisesList.length == 0) {
+		if (devisesList.length === 0 && !error) {
 			let devises = await fetchDevises();
 		    if (!devises.error) {
 		    	setDevisesList(devises);
@@ -32,7 +32,7 @@ export default function CurrencyConverter(){
 		    }
 		}
 
-		if (!rates['EUR']){
+		if (!rates['EUR'] && !error){
 			let rates = await getConversionRates();
 			if (!rates.error) {
 		    	setRates(rates);
