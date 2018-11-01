@@ -5,9 +5,17 @@ export default function LoadingScreen({ loading }) {
   return (
     <div style={styles.container}>
     	<div style={styles.imageContainer}>
-    		<div><img style={styles.image} src="logo.gif" alt="logo oclock"/></div>
-    		<div><h1>Currency Converter</h1></div>
-    		<div><p style={styles.loadingText}><Icon loading name='sync alternate' />Chargement des devises...</p></div>
+    		<div>
+    			<img style={styles.image} src="logo.gif" alt="logo oclock"/>
+			</div>
+    		<div>
+    			<h1>Currency Converter</h1>
+			</div>
+    		<div>
+    			<p style={styles.loadingText}>
+    				<Icon loading name='sync alternate' />Chargement des devises...
+				</p>
+			</div>
     	</div>
     </div>
   );
