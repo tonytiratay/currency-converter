@@ -10,7 +10,7 @@ import { Container, Segment, Form } from 'semantic-ui-react';
 export default function CurrencyConverter(){
 
 	// Initialiser tous les states nécessaires
-	
+
 	const [error, setError] = useState(false); // Erreur avec l'API
 	const [amount, setAmount] = useState(50); // Valeur saisie par l'user
 	const [devisesList, setDevisesList] = useState([]); // Liste des devises
@@ -114,7 +114,7 @@ export default function CurrencyConverter(){
 						</Segment>
 						<Segment style={styles.resultArea} placeholder>
 						{displayRatio()}
-						<h1>{amount} EUR = {result} {devise}</h1>
+						<h1>{amount || 0} EUR = {result} {devise}</h1>
 					</Segment>
 					</Segment.Group>
 				</Container>
