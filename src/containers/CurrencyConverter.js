@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import { fetchDevises, getConversionRates } from '../api/fixer';
 
+import LoadingScreen from '../components/LoadingScreen';
+
 import { Container, Segment, Form } from 'semantic-ui-react';
 
 export default function CurrencyConverter(){
 
 	// Initialiser tous les states nécessaires
 
-	const [amount, setAmount] = useState(0); // Valeur saisie par l'user
+	const [amount, setAmount] = useState(50); // Valeur saisie par l'user
 	const [devisesList, setDevisesList] = useState([]); // Liste des devises
 	const [rates, setRates] = useState({}); // Liste des ratios
 	const [loading, setLoading] = useState(true);  // UI loading
@@ -32,9 +34,15 @@ export default function CurrencyConverter(){
 		    	setRates(rates);
 		    }
 		}
-		
-		// Arrêter le loading en cas de succès comme d'erreur
 
+		// et effectuer la première conversion avec les valeurs par défaut
+		
+		const fullNumber = amount * rates[devise]; // Faire la conversion
+		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
+		setResult(roundedNumber); // L'assinger au state
+		
+		// Arrêter le loading pour afficher le converter
+		
 		setLoading(false);
 	});
 
@@ -56,43 +64,56 @@ export default function CurrencyConverter(){
 		setResult(roundedNumber); // L'assinger au state
 	};
 
-	return(
-		<div style={styles.container}>
-			<Container>
-				<Segment.Group style={styles.segments}>
-					<Segment>
-						<h1>Currency Converter</h1>
+	const displayRatio = () => {
+		const fullNumber = rates[devise]; // Faire la conversion
+		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
+		return (
+			<div style={styles.ratio}>
+				<h3>1 EUR = {roundedNumber} {devise}</h3>
+			</div>
+		);
+	};
+
+	const converter = () => {
+		return(
+			<div style={styles.container}>
+				<img style={styles.image} src="logo.gif" alt="logo oclock"/>
+				<Container>
+					<Segment.Group style={styles.segments}>
+						<Segment>
+							<h1>Currency Converter</h1>
+						</Segment>
+						<Segment>
+							<Form>
+								<Form.Group widths='equal'>
+									<Form.Input
+										label="Montant en €"
+										value={amount}
+										type='text' 
+										onChange={handleChangeAmount.bind(this)}
+										placeholder='€'/>
+									<Form.Dropdown
+										label="Devise à convertir"
+										options={devisesList} 
+										placeholder="devise"
+										value={devise}
+										onChange={handleChangeDevise.bind(this)}
+										search selection fluid/>
+								</Form.Group>
+							</Form>
+						</Segment>
+						<Segment style={styles.resultArea} placeholder>
+						{displayRatio()}
+						<h1>{amount} EUR = {result} {devise}</h1>
 					</Segment>
-					<Segment>
-						<Form>
-							<Form.Group widths='equal'>
-								<Form.Input
-									label="Montant en €"
-									disabled={loading}
-									value={amount}
-									loading={loading}  
-									type='text' 
-									onChange={handleChangeAmount.bind(this)}
-									placeholder='€'/>
-								<Form.Dropdown
-									label="Devise à convertir"
-									disabled={loading}
-									loading={loading} 
-									options={devisesList} 
-									placeholder="devise"
-									value={devise}
-									onChange={handleChangeDevise.bind(this)}
-									search selection fluid/>
-							</Form.Group>
-						</Form>
-					</Segment>
-					<Segment style={styles.resultArea} loading={loading} placeholder>
-					<h1>{result} {devise}</h1>
-				</Segment>
-				</Segment.Group>
-			</Container>
-		</div>
-	);
+					</Segment.Group>
+				</Container>
+			</div>
+		);
+	};
+
+	return loading ? <LoadingScreen /> : converter()
+
 }
 
 
@@ -103,6 +124,13 @@ const styles = {
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: '#23c2a7',
+		flexDirection: 'column'
+	},
+	image: {
+		maxWidth: '100%'
+	},
+	ratio: {
+
 	},
 	segments: {
 		width: '100%'

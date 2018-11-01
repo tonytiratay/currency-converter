@@ -28,6 +28,7 @@ export const fetchDevises = () => {
 			   array.push({
 				 key,
 				 value: key,
+				 icon: 'flag outline',
 				 text: `${key} - ${devises[key]}`
 			   });
 			});

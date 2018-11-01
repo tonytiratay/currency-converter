@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
-import LoadingScreen from './components/LoadingScreen';
 import CurrencyConverter from './containers/CurrencyConverter';
 
 class App extends Component {
