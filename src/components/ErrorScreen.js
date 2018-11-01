@@ -15,7 +15,9 @@ export default function ErrorScreen() {
     			<p style={styles.errorText}>
     				<Icon name='warning' />Oups...
 				</p>
-				<p style={styles.errorText}>Impossible de se connecter à l'API de Fixer.<br/> Vérifiez votre connexion internet, ou essayez plus tard !</p>
+				<p style={styles.errorText}>Impossible de se connecter à l'API de Fixer.<br/> 
+					Vérifiez votre connexion internet, ou essayez plus tard !
+				</p>
 			</div>
     	</div>
     </div>
