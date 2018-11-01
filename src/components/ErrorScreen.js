@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 
-export default function LoadingScreen() {
+export default function ErrorScreen() {
   return (
     <div style={styles.container}>
     	<div style={styles.imageContainer}>
@@ -12,9 +12,10 @@ export default function LoadingScreen() {
     			<h1>Currency Converter</h1>
 			</div>
     		<div>
-    			<p style={styles.loadingText}>
-    				<Icon loading name='sync alternate' />Chargement des devises...
+    			<p style={styles.errorText}>
+    				<Icon name='warning' />Oups...
 				</p>
+				<p style={styles.errorText}>Impossible de se connecter à l'API de Fixer.<br/> Vérifiez votre connexion internet, ou essayez plus tard !</p>
 			</div>
     	</div>
     </div>
@@ -25,7 +26,7 @@ const styles = {
 	container: {
 		display: 'flex',
 	    flex: 1,
-	    backgroundColor: '#23c2a7',
+	    backgroundColor: '#D63C3C',
 	    color: '#fff',
 	    alignItems: 'center',
 	    justifyContent: 'center',
@@ -40,7 +41,7 @@ const styles = {
 	image: {
 		maxWidth: '100%'
 	},
-	loadingText: {
+	errorText: {
 		fontSize: 24,
 		marginTop: 30
 	}

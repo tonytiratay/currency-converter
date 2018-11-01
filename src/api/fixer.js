@@ -21,7 +21,7 @@ export const fetchDevises = () => {
 			const devises = results.data.symbols;
 
 			// Préparer les devise dans un tableau au format attendu
-			// par le dropdown se semantic-ui
+			// par le dropdown de semantic-ui
 
 			const array = [];
 	    	Object.keys(devises).map((key, index) => {

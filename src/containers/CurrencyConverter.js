@@ -3,13 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { fetchDevises, getConversionRates } from '../api/fixer';
 
 import LoadingScreen from '../components/LoadingScreen';
+import ErrorScreen from '../components/ErrorScreen';
 
 import { Container, Segment, Form } from 'semantic-ui-react';
 
 export default function CurrencyConverter(){
 
 	// Initialiser tous les states nécessaires
-
+	const [error, setError] = useState(false); // Erreur avec l'API
 	const [amount, setAmount] = useState(50); // Valeur saisie par l'user
 	const [devisesList, setDevisesList] = useState([]); // Liste des devises
 	const [rates, setRates] = useState({}); // Liste des ratios
@@ -25,6 +26,8 @@ export default function CurrencyConverter(){
 			let devises = await fetchDevises();
 		    if (!devises.error) {
 		    	setDevisesList(devises);
+		    } else {
+		    	setError(true);
 		    }
 		}
 
@@ -32,6 +35,8 @@ export default function CurrencyConverter(){
 			let rates = await getConversionRates();
 			if (!rates.error) {
 		    	setRates(rates);
+		    } else {
+		    	setError(true);
 		    }
 		}
 
@@ -64,6 +69,8 @@ export default function CurrencyConverter(){
 		setResult(roundedNumber); // L'assinger au state
 	};
 
+	// Affichage du ratio entre 1 euro et la devise sélectionnée
+
 	const displayRatio = () => {
 		const fullNumber = rates[devise]; // Faire la conversion
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
@@ -73,6 +80,8 @@ export default function CurrencyConverter(){
 			</div>
 		);
 	};
+
+	// Affichage du convertisseur
 
 	const converter = () => {
 		return(
@@ -112,7 +121,9 @@ export default function CurrencyConverter(){
 		);
 	};
 
-	return loading ? <LoadingScreen /> : converter()
+	// Afficher le bon composant en fonction de l'état de l'application
+
+	return loading ? <LoadingScreen /> : error ? <ErrorScreen /> : converter()
 
 }
 
