@@ -1,7 +1,5 @@
 ![capture d'écran de l'application](./public/capture.gif)
 
-DEMO : https://oclock-currency.firebaseapp.com
-
 # Préparation du projet
 
 Rendez-vous dans le répertoire du projet et taper
