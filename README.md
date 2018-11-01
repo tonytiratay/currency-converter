@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![capture d'écran de l'application](./public/capture.gif)
 
 # Préparation du projet
 
