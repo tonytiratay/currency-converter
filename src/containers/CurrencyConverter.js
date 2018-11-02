@@ -14,7 +14,7 @@ export default function CurrencyConverter(){
 	const [error, setError] = useState(false); // Erreur avec l'API
 	const [amount, setAmount] = useState(50); // Valeur saisie par l'user
 	const [devisesList, setDevisesList] = useState([]); // Liste des devises
-	const [rates, setRates] = useState({USD: 1.13}); // Liste des ratios
+	const [rates, setRates] = useState({}); // Liste des ratios
 	const [loading, setLoading] = useState(true);  // UI loading true par defaut
 	const [result, setResult] = useState(0); // Resultat de la conversion
 	const [devise, setDevise] = useState('USD'); // Devise sélectionnée
@@ -149,9 +149,6 @@ const styles = {
 	},
 	image: {
 		maxWidth: '100%'
-	},
-	ratio: {
-
 	},
 	segments: {
 		width: '100%'
