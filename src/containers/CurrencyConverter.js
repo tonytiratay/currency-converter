@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+// Import api methods
 import { fetchDevises, getConversionRates } from '../api/fixer';
 
+// Import Components
 import LoadingScreen from '../components/LoadingScreen';
 import ErrorScreen from '../components/ErrorScreen';
-
 
 // Import main styles
 import { container } from '../styles';
@@ -35,9 +36,11 @@ export default function CurrencyConverter(){
 
 			let devises = await fetchDevises();
 
-		    if (!devises.error) { // Si pas d'erreur, modifier le state avec les devises
+		    if (!devises.error) { 
+		    	// Si pas d'erreur, modifier le state avec les devises
 		    	setDevisesList(devises);
-		    } else {  // Sinon modifier le state avec error = true
+		    } else {  
+		    	// Sinon modifier le state avec error = true
 		    	setError(true);
 		    }
 		}
@@ -48,16 +51,18 @@ export default function CurrencyConverter(){
 
 			let rates = await getConversionRates();
 
-			if (!rates.error) {  // Si pas d'erreur, modifier le state avec les ratios de conversion
+			if (!rates.error) {  
+				// Si pas d'erreur, modifier le state avec les ratios de conversion
 		    	setRates(rates);
-		    } else {  // Sinon modifier le state avec error = true
+		    } else {  
+		    	// Sinon modifier le state avec error = true
 		    	setError(true);
 		    }
 		}
 
 		// Effectuer la première conversion avec les valeurs par défaut
 		
-		const fullNumber = amount * rates[devise]; // Faire la conversion avec le ratio lié à la devise
+		const fullNumber = amount * rates[devise]; // Faire la conversion avec la devise
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		setResult(roundedNumber); // L'assigner au state
 		
@@ -71,7 +76,7 @@ export default function CurrencyConverter(){
 	const handleChangeDevise = (elem, target) => {
 		const deviseToConvertTo = target.value; // Récupérer la devise choisie
 		setDevise(deviseToConvertTo); // L'assigner au state
-		const fullNumber = amount * rates[deviseToConvertTo]; // Faire la conversion avec le ratio lié à la devise
+		const fullNumber = amount * rates[deviseToConvertTo]; // Faire la conversion avec la devise
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		setResult(roundedNumber); // L'assigner au state
 	};
@@ -79,7 +84,7 @@ export default function CurrencyConverter(){
 	const handleChangeAmount = (elem, target) => {
 		const amountToConvertFrom = target.value; // Récupérer le montant saisi
 		setAmount(amountToConvertFrom); // L'assigner au state
-		const fullNumber = amountToConvertFrom * rates[devise]; // Faire la conversion avec le ratio lié à la devise
+		const fullNumber = amountToConvertFrom * rates[devise]; // Faire la conversion avec la devise
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		setResult(roundedNumber); // L'assigner au state
 	};
@@ -87,7 +92,7 @@ export default function CurrencyConverter(){
 	// Affichage du ratio entre 1 euro et la devise sélectionnée
 
 	const displayRatio = () => {
-		const fullNumber = rates[devise]; // Faire la conversion
+		const fullNumber = rates[devise]; // Faire la conversion avec la devise
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		return (
 			<div style={styles.ratio}>
