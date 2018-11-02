@@ -5,7 +5,6 @@ import CurrencyConverter from './containers/CurrencyConverter';
 
 class App extends Component {
   render() {
-    console.log(React.version);
     return (
       <div id="main">
         <CurrencyConverter />

@@ -24,7 +24,7 @@ export const fetchDevises = () => {
 			// par le dropdown de semantic-ui
 
 			const array = [];
-	    	Object.keys(devises).map((key, index) => {
+	    	Object.keys(devises).map((key) => {
 			   return array.push({
 				 key,
 				 value: key,
@@ -39,9 +39,9 @@ export const fetchDevises = () => {
 			
 			// En cas d'erreur, renvoyer un objet avec une propriété error
 
-			return {error}
+			return { error };
 		});
-	return result
+	return result;
 };
 
 // Récupérer la liste de tous les ratios de conversion
@@ -62,9 +62,9 @@ export const getConversionRates = () => {
 			
 			// En cas d'erreur, renvoyer un objet avec une propriété error
 
-			return {error}
+			return { error };
 		});
-	return result
+	return result;
 };
 
 
