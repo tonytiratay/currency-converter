@@ -108,7 +108,7 @@ export default function CurrencyConverter(){
 									<Form.Input
 										label="Montant en €"
 										value={amount}
-										type='text' 
+										type='number' 
 										onChange={handleChangeAmount.bind(this)}
 										placeholder='€'/>
 									<Form.Dropdown
