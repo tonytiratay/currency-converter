@@ -5,6 +5,11 @@ import { fetchDevises, getConversionRates } from '../api/fixer';
 import LoadingScreen from '../components/LoadingScreen';
 import ErrorScreen from '../components/ErrorScreen';
 
+
+// Import main styles
+import { container } from '../styles';
+
+// Import semantic ui components
 import { Container, Segment, Form } from 'semantic-ui-react';
 
 export default function CurrencyConverter(){
@@ -139,19 +144,13 @@ export default function CurrencyConverter(){
 
 
 const styles = {
-	container: {
-		display: 'flex',
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: '#23c2a7',
-		flexDirection: 'column'
-	},
+	container,
 	image: {
 		maxWidth: '100%'
 	},
 	segments: {
-		width: '100%'
+		width: '100%',
+		color: '#333'
 	},
 	resultArea: {
 		display: 'flex',

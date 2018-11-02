@@ -1,4 +1,6 @@
 import React from 'react';
+// Import main styles
+import { container } from '../styles';
 import { Icon } from 'semantic-ui-react';
 
 // Composant affiché lorsque l'APU n'est pas joignable 
@@ -26,15 +28,8 @@ export default function ErrorScreen() {
   );
 };
 
-const styles = {
-	container: {
-		display: 'flex',
-	    flex: 1,
-	    backgroundColor: '#D63C3C',
-	    color: '#fff',
-	    alignItems: 'center',
-	    justifyContent: 'center',
-	},
+const styles = { 
+	container: {...container, backgroundColor: '#D63C3C' },
 	imageContainer: {
 		display: 'flex',
 		maxWidth: '50%',
