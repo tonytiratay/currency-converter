@@ -20,10 +20,14 @@ export default function CurrencyConverter(){
 	const [devise, setDevise] = useState('USD'); // Devise sélectionnée
 	
 	// Récupérer tous les ratios et devises si aucun de chargé
+	// Cette fonction est appelée au premier render, et à tous les suivants.
 
 	useEffect(async () => {
 
 		if (devisesList.length === 0 && !error) {
+			
+			// Appel API pour récupérer les devises
+
 			let devises = await fetchDevises();
 
 		    if (!devises.error) { // Si pas d'erreur, modifier le state avec les devises
@@ -34,6 +38,9 @@ export default function CurrencyConverter(){
 		}
 
 		if (!rates['EUR'] && !error){
+			
+			// Appel API pour récupérer les ratios de conversion
+
 			let rates = await getConversionRates();
 
 			if (!rates.error) {  // Si pas d'erreur, modifier le state avec les ratios de conversion
