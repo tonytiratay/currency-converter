@@ -7,6 +7,7 @@ import axios from 'axios';
 import { API_KEY } from '../config';
 
 // Récupérer la liste de toutes les devises
+
 export const fetchDevises = () => {
 
 	// Preparer l'url pour la requête
@@ -18,6 +19,7 @@ export const fetchDevises = () => {
 			// Stocker dans "devises" les résultats fournis par l'API
 
 			const devises = results.data.symbols;
+			
 			// Préparer les devise dans un tableau au format attendu
 			// par le dropdown de semantic-ui
 
@@ -53,11 +55,13 @@ export const getConversionRates = () => {
 		.then((conversion) => {
 
 			// Extraire et renvoyer les ratios de conversion
+
 			return conversion.data.rates;
 		})
 		.catch((error) => {
 			
 			// En cas d'erreur, renvoyer un objet avec une propriété error
+
 			return {error}
 		});
 	return result

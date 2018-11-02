@@ -1,6 +1,8 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 
+// Composant affiché lorsque l'APU n'est pas joignable 
+
 export default function ErrorScreen() {
   return (
     <div style={styles.container}>

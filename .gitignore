@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Ajouter le fichier de config
+# /src/config.js
 
 # dependencies
 /node_modules

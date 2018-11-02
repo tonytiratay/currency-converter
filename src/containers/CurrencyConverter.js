@@ -25,25 +25,27 @@ export default function CurrencyConverter(){
 
 		if (devisesList.length === 0 && !error) {
 			let devises = await fetchDevises();
-		    if (!devises.error) {
+
+		    if (!devises.error) { // Si pas d'erreur, modifier le state avec les devises
 		    	setDevisesList(devises);
-		    } else {
+		    } else {  // Sinon modifier le state avec error = true
 		    	setError(true);
 		    }
 		}
 
 		if (!rates['EUR'] && !error){
 			let rates = await getConversionRates();
-			if (!rates.error) {
+
+			if (!rates.error) {  // Si pas d'erreur, modifier le state avec les ratios de conversion
 		    	setRates(rates);
-		    } else {
+		    } else {  // Sinon modifier le state avec error = true
 		    	setError(true);
 		    }
 		}
 
-		// et effectuer la première conversion avec les valeurs par défaut
+		// Effectuer la première conversion avec les valeurs par défaut
 		
-		const fullNumber = amount * rates[devise]; // Faire la conversion
+		const fullNumber = amount * rates[devise]; // Faire la conversion avec le ratio lié à la devise
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		setResult(roundedNumber); // L'assigner au state
 		
@@ -57,7 +59,7 @@ export default function CurrencyConverter(){
 	const handleChangeDevise = (elem, target) => {
 		const deviseToConvertTo = target.value; // Récupérer la devise choisie
 		setDevise(deviseToConvertTo); // L'assigner au state
-		const fullNumber = amount * rates[deviseToConvertTo]; // Faire la conversion
+		const fullNumber = amount * rates[deviseToConvertTo]; // Faire la conversion avec le ratio lié à la devise
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		setResult(roundedNumber); // L'assigner au state
 	};
@@ -65,7 +67,7 @@ export default function CurrencyConverter(){
 	const handleChangeAmount = (elem, target) => {
 		const amountToConvertFrom = target.value; // Récupérer le montant saisi
 		setAmount(amountToConvertFrom); // L'assigner au state
-		const fullNumber = amountToConvertFrom * rates[devise]; // Faire la conversion
+		const fullNumber = amountToConvertFrom * rates[devise]; // Faire la conversion avec le ratio lié à la devise
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		setResult(roundedNumber); // L'assigner au state
 	};

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 
+// Comosant affiché lors du chargement des devises et ratios
+
 export default function LoadingScreen() {
   return (
     <div style={styles.container}>
