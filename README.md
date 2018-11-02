@@ -1,6 +1,6 @@
 ![capture d'écran de l'application](./public/capture.gif)
 
-![Tester la version LIVE](http://oclock-currency-converter.000webhostapp.com/)
+[Tester la version LIVE](http://oclock-currency-converter.000webhostapp.com/)
 
 # Préparation du projet
 
