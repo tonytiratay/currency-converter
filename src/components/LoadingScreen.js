@@ -1,6 +1,6 @@
 import React from 'react';
 // Import main styles
-import { container } from '../styles';
+import { container, imageContainer } from '../styles';
 import { Icon } from 'semantic-ui-react';
 
 // Comosant affiché lors du chargement des devises et ratios
@@ -27,13 +27,7 @@ export default function LoadingScreen() {
 
 const styles = {
 	container,
-	imageContainer: {
-		display: 'flex',
-		maxWidth: '50%',
-		flexDirection: 'column',
-		alignItems: 'center',
-	    justifyContent: 'center',
-	},
+	imageContainer,
 	image: {
 		maxWidth: '100%'
 	},

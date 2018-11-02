@@ -7,3 +7,11 @@ export const container = {
 	flexDirection: 'column',
 	color: '#fff'
 };
+
+export const imageContainer = {
+	display: 'flex',
+	maxWidth: '50%',
+	flexDirection: 'column',
+	alignItems: 'center',
+    justifyContent: 'center',
+};
