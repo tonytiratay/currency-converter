@@ -34,6 +34,10 @@ ou
 
 	npm build
 
+# Dépendances
+
+Le projet utilise react@16.7.0-alpha ainsi que react-dom@16.7.0-alpha. Ces deux packages permettent d'utiliser les Hooks, nouveauté disponibles uniquement dans cette version alpha, pour le moment.
+
 # Spécifications
 
 Le but est de consommer l'api de http://fixer.io (l'obtention d'un API KEY est gratuite), pour

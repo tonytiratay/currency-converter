@@ -45,7 +45,7 @@ export default function CurrencyConverter(){
 		
 		const fullNumber = amount * rates[devise]; // Faire la conversion
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
-		setResult(roundedNumber); // L'assinger au state
+		setResult(roundedNumber); // L'assigner au state
 		
 		// Arrêter le loading pour afficher le converter
 		
@@ -59,7 +59,7 @@ export default function CurrencyConverter(){
 		setDevise(deviseToConvertTo); // L'assigner au state
 		const fullNumber = amount * rates[deviseToConvertTo]; // Faire la conversion
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
-		setResult(roundedNumber); // L'assinger au state
+		setResult(roundedNumber); // L'assigner au state
 	};
 
 	const handleChangeAmount = (elem, target) => {
@@ -67,7 +67,7 @@ export default function CurrencyConverter(){
 		setAmount(amountToConvertFrom); // L'assigner au state
 		const fullNumber = amountToConvertFrom * rates[devise]; // Faire la conversion
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
-		setResult(roundedNumber); // L'assinger au state
+		setResult(roundedNumber); // L'assigner au state
 	};
 
 	// Affichage du ratio entre 1 euro et la devise sélectionnée
