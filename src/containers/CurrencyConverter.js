@@ -132,7 +132,10 @@ export default function CurrencyConverter(){
 							</Form>
 						</Segment>
 						<Segment style={styles.resultArea} placeholder>
-							<h1>{amount || 0} EUR = {result} {devise}</h1>
+							<h1>
+								{amount || 0} EUR <Icon name="arrow right" />
+								<span style={{fontSize: 48}}> {result} {devise}</span>
+							</h1>
 							<Icon style={styles.moneyIcon} name="money bill alternate outline" />
 							{displayRatio()}
 						</Segment>
