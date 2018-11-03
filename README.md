@@ -36,6 +36,18 @@ ou
 
 	npm build
 
+# Gestion des erreurs
+
+En version gratuite, l'API de fixer ne permet de faire des requêtes qu'en HTTP non sécurisé. Il y a donc 3 cas de figures qui peuvent générer des erreurs dans ce projet:
+
+* En développement local, vous n'êtes pas connecté à Internet
+* Votre environnement de travail est en HTTPS
+* L'API de fixer est injoignable
+
+Ces 3 cas de figure sont couvert et généreront une page d'erreur. Pour le tester en local par exemple, il vous suffit d'essayer de charger l'application en étant déconnecté d'internet.
+
+![Page d'erreur](./public/error-capture.jpg)
+
 # Dépendances
 
 Le projet utilise react@16.7.0-alpha ainsi que react-dom@16.7.0-alpha. Ces deux packages permettent d'utiliser les Hooks, nouveauté disponibles uniquement dans cette version alpha, pour le moment.
