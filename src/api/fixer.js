@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// Importer la fonction de préparation des data pour le dropdown
+
 import { prepareDevisesForDropdown } from '../lib/dataPrepare';
 
 // importer la clé d'API depuis le fichier de config
@@ -18,18 +20,14 @@ export const fetchDevises = () => {
 	const result = axios.get(fetchURL)
 		.then((results) => {
 
-			// Stocker dans "devises" les résultats fournis par l'API
-
-			const devises = results.data.symbols;
-			
 			// Préparer les devise dans un tableau au format attendu
 			// par le dropdown de semantic-ui
 
-			return prepareDevisesForDropdown(devises);
+			return prepareDevisesForDropdown(results.data.symbols);
 		})
 		.catch((error) => {
 			
-			// En cas d'erreur, renvoyer un objet avec une propriété error
+			// En cas d'erreur, renvoyer un objet avec en propriété l'error
 
 			return { error };
 		});
