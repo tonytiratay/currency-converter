@@ -10,18 +10,18 @@ export default function ErrorScreen({message}) {
     <div style={styles.container}>
     	<div style={styles.imageContainer}>
     		<div>
-    			<img style={styles.image} src="logo.gif" alt="logo oclock"/>
+    			<Icon style={styles.brokenIcon} name="broken chain" />
 			</div>
     		<div>
     			<h1>Currency Converter: {message}</h1>
+    			<p style={styles.errorText}>
+    				Oups... Impossible de se connecter à Fixer !
+				</p>
 			</div>
     		<div>
-    			<p style={styles.errorText}>
-    				Oups... Impossible de se connecter à Fixer<Icon name='warning' />
-				</p>
-				<ul>
+				<ul style={styles.listMessages} >
 					<li>Vérifiez votre connexion internet</li>
-					<li>Assurez vous que votre environnement est en HTTP et pas en HTTPS (version gratuite de fixer)</li>
+					<li>Assurez vous que votre environnement est en HTTP et non en HTTPS</li>
 					<li>Essayez plus tard, l'API de Fixer est peut-être injoignable</li>
 				</ul>
 			</div>
@@ -33,11 +33,17 @@ export default function ErrorScreen({message}) {
 const styles = { 
 	container: {...container, backgroundColor: '#D63C3C' },
 	imageContainer,
-	image: {
-		maxWidth: '100%'
+	brokenIcon: {
+		fontSize: 120
 	},
 	errorText: {
 		fontSize: 24,
-		marginTop: 30
+	},
+	listMessages: {
+		marginTop: 20,
+		padding: '10px 40px',
+		border: '1px solid #fff',
+		fontSize: 18,
+		lineHeight: '36px'
 	}
 };
