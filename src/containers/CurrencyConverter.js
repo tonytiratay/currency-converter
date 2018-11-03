@@ -11,14 +11,14 @@ import ErrorScreen from '../components/ErrorScreen';
 import { container } from '../styles';
 
 // Import semantic ui components
-import { Container, Segment, Form } from 'semantic-ui-react';
+import { Container, Segment, Form, Icon } from 'semantic-ui-react';
 
 export default function CurrencyConverter(){
 
 	// Initialiser tous les states nécessaires
 
 	const [error, setError] = useState(false); // Erreur avec l'API
-	const [amount, setAmount] = useState(50); // Valeur saisie par l'user
+	const [amount, setAmount] = useState(5); // Valeur saisie par l'user
 	const [devisesList, setDevisesList] = useState([]); // Liste des devises
 	const [rates, setRates] = useState({}); // Liste des ratios
 	const [loading, setLoading] = useState(true);  // UI loading true par defaut
@@ -96,7 +96,7 @@ export default function CurrencyConverter(){
 		const roundedNumber = Math.round(fullNumber * 100) / 100; // Arrondir le résultat
 		return (
 			<div style={styles.ratio}>
-				<h3>1 EUR = {roundedNumber} {devise}</h3>
+				<h3>1 EUR <Icon name="arrow right" />{roundedNumber} {devise}</h3>
 			</div>
 		);
 	};
@@ -109,10 +109,10 @@ export default function CurrencyConverter(){
 				<img style={styles.image} src="logo.gif" alt="logo oclock"/>
 				<Container>
 					<Segment.Group style={styles.segments}>
-						<Segment>
-							<h1>Currency Converter</h1>
+						<Segment inverted>
+							<h1><Icon name="exchange" /> Currency Converter</h1>
 						</Segment>
-						<Segment>
+						<Segment style={styles.form}>
 							<Form>
 								<Form.Group widths='equal'>
 									<Form.Input
@@ -132,9 +132,10 @@ export default function CurrencyConverter(){
 							</Form>
 						</Segment>
 						<Segment style={styles.resultArea} placeholder>
-						{displayRatio()}
-						<h1>{amount || 0} EUR = {result} {devise}</h1>
-					</Segment>
+							<Icon style={{fontSize: 48, color: '#eee'}} name="money bill alternate outline" />
+							{displayRatio()}
+							<h1>{amount || 0} EUR = {result} {devise}</h1>
+						</Segment>
 					</Segment.Group>
 				</Container>
 			</div>
@@ -157,9 +158,15 @@ const styles = {
 		width: '100%',
 		color: '#333'
 	},
+	form: {
+		background: '#eee',
+	},
 	resultArea: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center'
+	}, 
+	ratio: {
+		color: '#ccc'
 	}
 };
