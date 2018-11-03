@@ -14,6 +14,6 @@ export const prepareDevisesForDropdown = function (devises) {
 		 text: `${key} - ${devises[key]}`
 	   });
 	});
-	console.log(array);
+	
 	return array;
 };

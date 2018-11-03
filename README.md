@@ -28,6 +28,14 @@ ou
 
 	npm start
 
+# Tests
+
+	yarn test
+
+ou
+
+	npm test
+
 # Mise en production
 
 	yarn build
