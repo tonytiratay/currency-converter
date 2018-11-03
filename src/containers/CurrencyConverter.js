@@ -41,7 +41,7 @@ export default function CurrencyConverter(){
 		    	setDevisesList(devises);
 		    } else {  
 		    	// Sinon modifier le state avec error = true
-		    	setError(true);
+		    	setError(devises.error.message);
 		    }
 		}
 
@@ -56,7 +56,7 @@ export default function CurrencyConverter(){
 		    	setRates(rates);
 		    } else {  
 		    	// Sinon modifier le state avec error = true
-		    	setError(true);
+		    	setError(rates.error.message);
 		    }
 		}
 
@@ -147,7 +147,7 @@ export default function CurrencyConverter(){
 
 	// Afficher le bon composant en fonction de l'état de l'application
 
-	return loading ? <LoadingScreen /> : error ? <ErrorScreen /> : converter()
+	return loading ? <LoadingScreen /> : error ? <ErrorScreen message={error} /> : converter()
 
 }
 

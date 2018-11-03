@@ -3,9 +3,9 @@ import React from 'react';
 import { container, imageContainer } from '../styles';
 import { Icon } from 'semantic-ui-react';
 
-// Composant affiché lorsque l'APU n'est pas joignable 
+// Composant affiché lorsque l'API n'est pas joignable 
 
-export default function ErrorScreen() {
+export default function ErrorScreen({message}) {
   return (
     <div style={styles.container}>
     	<div style={styles.imageContainer}>
@@ -13,15 +13,17 @@ export default function ErrorScreen() {
     			<img style={styles.image} src="logo.gif" alt="logo oclock"/>
 			</div>
     		<div>
-    			<h1>Currency Converter</h1>
+    			<h1>Currency Converter: {message}</h1>
 			</div>
     		<div>
     			<p style={styles.errorText}>
-    				<Icon name='warning' />Oups...
+    				Oups... Impossible de se connecter à Fixer<Icon name='warning' />
 				</p>
-				<p style={styles.errorText}>Impossible de se connecter à l'API de Fixer.<br/> 
-					Vérifiez votre connexion internet, ou essayez plus tard !
-				</p>
+				<ul>
+					<li>Vérifiez votre connexion internet</li>
+					<li>Assurez vous que votre environnement est en HTTP et pas en HTTPS (version gratuite de fixer)</li>
+					<li>Essayez plus tard, l'API de Fixer est peut-être injoignable</li>
+				</ul>
 			</div>
     	</div>
     </div>
