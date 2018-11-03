@@ -132,9 +132,9 @@ export default function CurrencyConverter(){
 							</Form>
 						</Segment>
 						<Segment style={styles.resultArea} placeholder>
-							<Icon style={{fontSize: 48, color: '#eee'}} name="money bill alternate outline" />
-							{displayRatio()}
 							<h1>{amount || 0} EUR = {result} {devise}</h1>
+							<Icon style={styles.moneyIcon} name="money bill alternate outline" />
+							{displayRatio()}
 						</Segment>
 					</Segment.Group>
 				</Container>
@@ -165,7 +165,12 @@ const styles = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center'
-	}, 
+	},
+	moneyIcon: {
+		fontSize: 48,
+		color: '#eee',
+		marginTop: 13
+	},
 	ratio: {
 		color: '#ccc'
 	}
