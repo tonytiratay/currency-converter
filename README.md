@@ -1,4 +1,4 @@
-![capture d'écran de l'application](./public/capture.gif)
+![capture d'écran de l'application](./public/capture.jpg)
 
 [Tester la version LIVE](http://oclock-currency-converter.000webhostapp.com/)
 
