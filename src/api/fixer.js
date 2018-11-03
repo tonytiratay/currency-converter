@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { prepareDevisesForDropdown } from '../lib/dataPrepare';
+
 // importer la clé d'API depuis le fichier de config
 // Pour les besoins de l'exercice, ce fichier est commité
 // ATTENTION !!! En situation réelle, ajouter le fihcier de config au .gitignore
@@ -23,17 +25,7 @@ export const fetchDevises = () => {
 			// Préparer les devise dans un tableau au format attendu
 			// par le dropdown de semantic-ui
 
-			const array = [];
-	    	Object.keys(devises).map((key) => {
-			   return array.push({
-				 key,
-				 value: key,
-				 icon: 'flag outline',
-				 text: `${key} - ${devises[key]}`
-			   });
-			});
-
-			return array;
+			return prepareDevisesForDropdown(devises);
 		})
 		.catch((error) => {
 			
