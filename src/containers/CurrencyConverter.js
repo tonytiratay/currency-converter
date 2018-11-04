@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // Importer React et les 2 hooks nécessaires
 import { fetchDevises, getConversionRates } from '../api/fixer'; // Import api methods
 import LoadingScreen from '../components/LoadingScreen'; // Import Loading Screen
 import ErrorScreen from '../components/ErrorScreen'; // Import Error Screen
@@ -10,7 +10,7 @@ export default function CurrencyConverter(){
 	// Initialiser tous les states nécessaires (Hook useState)
 
 	const [error, setError] = useState(false); // Erreur avec l'API
-	const [amount, setAmount] = useState(5); // Valeur saisie par l'user
+	const [amount, setAmount] = useState(15); // Valeur saisie par l'user
 	const [devisesList, setDevisesList] = useState([]); // Liste des devises
 	const [rates, setRates] = useState({}); // Liste des ratios
 	const [loading, setLoading] = useState(true);  // UI loading true par defaut
@@ -65,7 +65,7 @@ export default function CurrencyConverter(){
 
 	// Gérer les changements de valeur ou de devise
 
-	const handleChangeDevise = (elem, target) => {
+	const handleChangeDevise = (e, target) => {
 		const deviseToConvertTo = target.value; // Récupérer la devise choisie
 		setDevise(deviseToConvertTo); // L'assigner au state
 		const fullNumber = amount * rates[deviseToConvertTo]; // Faire la conversion avec la devise
@@ -73,7 +73,7 @@ export default function CurrencyConverter(){
 		setResult(roundedNumber); // L'assigner au state
 	};
 
-	const handleChangeAmount = (elem, target) => {
+	const handleChangeAmount = (e, target) => {
 		const amountToConvertFrom = target.value; // Récupérer le montant saisi
 		setAmount(amountToConvertFrom); // L'assigner au state
 		const fullNumber = amountToConvertFrom * rates[devise]; // Faire la conversion avec la devise
@@ -85,9 +85,8 @@ export default function CurrencyConverter(){
 
 	const displayRatio = () => {
 
-		// Récupérer le ration et l'arrondir
-		const fullNumber = rates[devise];
-		const roundedNumber = Math.round(fullNumber * 100) / 100;
+		// Récupérer le ratio et l'arrondir
+		const roundedNumber = Math.round(rates[devise] * 100) / 100;
 
 		return (
 			<div style={styles.ratio}>
