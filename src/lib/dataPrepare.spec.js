@@ -7,21 +7,30 @@ describe('dataPrepare', () => {
 
 		const fakeData = {
 			AED: "United Arab Emirates Dirham",
+			USD: "United States Dollar"
 		};
 
 		// Un tableau tel que semantic UI attend pour
 		// générer un dropdown
 
-		const expectedObject = [{
-			icon: "flag outline",
-			key: "AED",
-			text: "AED - United Arab Emirates Dirham",
-			value: "AED"
-		}];
+		const expectedObject = [
+			{
+				icon: "flag outline",
+				key: "AED",
+				text: "AED - United Arab Emirates Dirham",
+				value: "AED"
+			},
+			{
+				icon: "flag outline",
+				key: "USD",
+				text: "USD - United States Dollar",
+				value: "USD"
+			}
+		];
 	
-		// Vérifier que la fonction renvoi bien un tableau formatté
+		// Vérifier que la fonction renvoi bien un tableau formaté
 		// tel qu'il devrait l'être lorsqu'on lui passe en argument
-		// un objet tel que fourni par Fixer
+		// un objet dont la structure est la même que celle fourni par Fixer
 		
 		expect(prepareDevisesForDropdown(fakeData)).toMatchObject(expectedObject);
 
